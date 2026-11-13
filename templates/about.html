@@ -1,63 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>products</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+{% extends 'master.html' %}
+{%load static%}
+{% block title %} About us {%endblock%}
+{%block content%}
 
-    <div class="container-fluid">
+<div class="container">
+   <div class="row justify-content-center">
+        <div class="col-8">
+<table class="table animate__animated animate__bounce">
+    <tr>
+        <th>Name</th>
+        <th>English</th>
+        <th>Maths</th>
+        <th>Chem</th>
+        <th>Bio</th>
+        <th>Total</th>
+    </tr>
 
-        <a class="navbar-brand" href="{% url 'home' %}">
-            Django App
-        </a>
-
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavbar">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">
-                        Home
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">
-                        About
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'product' %}">
-                        Products
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
+{% for score in scores %}
+    <tr>
+        <td>{{score.Name}}</td>
+        <td>{{score.English}}</td>
+        <td>{{score.Maths}}</td>
+        <td>{{score.Chem}}</td>
+        <td>{{score.Bio}}</td>
+        <td></td>
+    </tr>
+ {% endfor %}
+</table>
 
     </div>
+   </div>
+</div>
+{%endblock%}
 
-</nav>
-
-<h2>About us</h2>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{%block extra_links%}
+<!--animation style  animate.style-->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+{%endblock%}

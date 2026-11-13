@@ -1,73 +1,30 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>products</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+{% extends 'master.html' %}
+{%load static%}
+{% block title %} Our Products {%endblock%}
+{%block content%}
+    <h2>Product Page</h2>
 
-    <div class="container-fluid">
+    <h3>Student Details</h3>
 
-        <a class="navbar-brand" href="{% url 'home' %}">
-            Django App
-        </a>
+    <p>Name: {{ name }}</p>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavbar">
+    <p>Age: {{ age }}</p>
 
-            <span class="navbar-toggler-icon"></span>
+    <p>Weight: {{ weight }}</p>
 
-        </button>
+    <h3>Subjects</h3>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">
-                        Home
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">
-                        About
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'product' %}">
-                        Products
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-<h2>products</h2>
-<div class="container">
-    <h3>Full nme is {{name}}</h3>
-    <p>{{age}} years old</p>
-    <p>{{weight}}</p>
-    {%for sub in subject%}
-    <p>{{sub}}</p>
+    {% for sub in subject %}
+        <p>{{ sub }}</p>
     {% endfor %}
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <h3>Check Disabled Status</h3>
+
+    {% if isdisable %}
+        <p>Account is disabled</p>
+    {% else %}
+        <p>Account is active</p>
+    {% endif %}
+
+{%endblock%}
